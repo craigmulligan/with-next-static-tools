@@ -1,4 +1,4 @@
-## How to use
+## with-next-static-tools 
 
 This is an example of building a small blog with [`next-static-tools`](https://github.com/hobochild/next-static-tools)
 
