@@ -1,7 +1,7 @@
 const path = require('path')
 const yargs = require('yargs')
 const next = require('next')
-const Server = require('next-static-tools').default
+const Server = require('next-static-tools')
 const { build } = require('next-static-tools')
 const dev = process.env.NODE_ENV !== 'production'
 
