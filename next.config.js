@@ -28,7 +28,7 @@ module.exports = {
   },
   typeDefs,
   resolvers,
-  webpack: (config) => {
+  webpack: config => {
     console.log('called')
     return config
   }

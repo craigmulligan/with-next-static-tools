@@ -4,11 +4,11 @@ const next = require('next')
 const Server = require('next-static-tools').default
 const { build } = require('next-static-tools')
 const dev = process.env.NODE_ENV !== 'production'
-const app = next({ dev })
 
 yargs
   .version()
   .command('dev', 'run dev server', () => {
+    const app = next({ dev })
     const server = new Server(app)
     // add yo custom middleware
     server.get('/post/:id', (req, res) => {
@@ -18,13 +18,13 @@ yargs
     })
 
     server
-      .start(5000)
+      .start()
       .then(port => console.log(`server on http://localhost:${port}`))
       .catch(console.err)
   })
   .command('export', 'export static site', () => {
-      const cwd = process.cwd() 
-      build(cwd)
+    const cwd = process.cwd()
+    build(cwd)
       .then(() => process.exit())
       .catch(err => {
         console.log(err)
