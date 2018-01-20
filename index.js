@@ -2,8 +2,8 @@ const path = require('path')
 const yargs = require('yargs')
 const Server = require('next-static-tools').default
 const next = require('next')
-const dev = process.env.NODE_ENV !== 'production'
-const app = next({ dev })
+const { TestServer } = require('next-static-tools')
+const app = next({ dev: true })
 
 yargs
   .version()
@@ -11,7 +11,7 @@ yargs
     'dev',
     'run dev server',
     () => {
-      const server = Server(app)
+      const server = new TestServer(app)
       // add yo custom middleware
       server.get('/post/:id', (req, res) => {
         return app.render(req, res, '/post', {
@@ -29,7 +29,7 @@ yargs
     'export',
     'export static site',
     () => {
-      const server = Server(app)
+      const server = new Server(app)
       server.export()
         .then(() => process.exit())
         .catch((err) => {

@@ -4,7 +4,7 @@ const typeDefs = require('./lib/typeDefs')
 const gql = require('graphql-tag')
 
 module.exports = {
-  exportPathMap: client => async () => {
+  exportPathMap: async (client)  => {
     const query = gql`
       query postsQuery {
         posts {
